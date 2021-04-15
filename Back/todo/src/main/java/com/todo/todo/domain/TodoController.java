@@ -48,9 +48,11 @@ public class TodoController {
         return convertToDto(service.get(id)) ;
     }
 
+
     private TodoDTO convertToDto(Todo todo) {
         return modelMapper.map(todo, TodoDTO.class);
     }
+
 
     private Todo convertToEntity(TodoDTO todoDto) throws ParseException {
         return modelMapper.map(todoDto, Todo.class);
