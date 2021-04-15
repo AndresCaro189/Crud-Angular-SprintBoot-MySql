@@ -20,14 +20,14 @@ public class TodoController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @GetMapping(value = "todos/todos")
+    @GetMapping(value = "todos")
     @ResponseBody
     public List<TodoDTO> list(){
         List<Todo> todos = service.list();
         return todos.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    @PostMapping(value = "todos/todos")
+    @PostMapping(value = "todos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public TodoDTO save(@Valid @RequestBody TodoDTO todoDto) throws ParseException {
@@ -37,12 +37,12 @@ public class TodoController {
     }
 
 
-    @DeleteMapping(value = "todos/{id}/todos")
+    @DeleteMapping(value = "todos/{id}")
     public void delete(@PathVariable("id")Long id){
         service.delete(id);
     }
 
-    @GetMapping(value = "todos/{id}/todos")
+    @GetMapping(value = "todos/{id}")
     @ResponseBody
     public TodoDTO get(@PathVariable("id") Long id){
         return convertToDto(service.get(id)) ;
