@@ -36,12 +36,11 @@ public class TodoController {
         return convertToDto(todoSaved);
     }
 
-
     @DeleteMapping(value = "todos/{id}")
     public void delete(@PathVariable("id")Long id){
         service.delete(id);
     }
-    
+
 
     private TodoDTO convertToDto(Todo todo) {
         return modelMapper.map(todo, TodoDTO.class);
