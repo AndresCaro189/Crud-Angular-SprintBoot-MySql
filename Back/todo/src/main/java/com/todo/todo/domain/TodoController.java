@@ -41,18 +41,11 @@ public class TodoController {
     public void delete(@PathVariable("id")Long id){
         service.delete(id);
     }
-
-    @GetMapping(value = "todos/{id}")
-    @ResponseBody
-    public TodoDTO get(@PathVariable("id") Long id){
-        return convertToDto(service.get(id)) ;
-    }
-
+    
 
     private TodoDTO convertToDto(Todo todo) {
         return modelMapper.map(todo, TodoDTO.class);
     }
-
 
     private Todo convertToEntity(TodoDTO todoDto) throws ParseException {
         return modelMapper.map(todoDto, Todo.class);
